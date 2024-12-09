@@ -9,6 +9,7 @@ import com.gustas.handler.InputHandler;
 import com.gustas.handler.PipeHandler;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class GameController extends JPanel {
 
@@ -26,10 +27,11 @@ public class GameController extends JPanel {
         collisionHandler = new CollisionHandler();
         gameRenderer = new GameRenderer();
         score = new Score();
-        InputHandler inputHandler = new InputHandler(this);
 
         setFocusable(true);
         requestFocusInWindow();
+
+        InputHandler inputHandler = new InputHandler(this);
         addKeyListener(inputHandler);
         setBackground(new Color(0, 128, 255));
     }
@@ -79,4 +81,9 @@ public class GameController extends JPanel {
         gameRenderer.renderGame(graphics, bird, pipeManager.getPipes(), isGameStarted, gameOver, score.getScore());
     }
 
+    public void notifyKeyPressed(int keyCode) {
+        if (keyCode == KeyEvent.VK_SPACE) {
+            startGame();
+        }
+    }
 }

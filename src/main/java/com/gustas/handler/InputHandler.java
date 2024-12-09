@@ -16,7 +16,7 @@ public class InputHandler extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            gameController.startGame();
+            gameController.notifyKeyPressed(e.getKeyCode());
         }
     }
 
